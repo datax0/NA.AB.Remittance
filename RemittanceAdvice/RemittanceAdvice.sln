@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemittanceAdvice", "RemittanceAdvice\RemittanceAdvice.csproj", "{C64014CD-D937-46AA-B30D-E19C66AA04FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Release|iPhone = Release|iPhone
+		Ad-Hoc|iPhone = Ad-Hoc|iPhone
+		AppStore|iPhone = AppStore|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C64014CD-D937-46AA-B30D-E19C66AA04FE}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{C64014CD-D937-46AA-B30D-E19C66AA04FE}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{C64014CD-D937-46AA-B30D-E19C66AA04FE}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{C64014CD-D937-46AA-B30D-E19C66AA04FE}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{C64014CD-D937-46AA-B30D-E19C66AA04FE}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{C64014CD-D937-46AA-B30D-E19C66AA04FE}.Debug|iPhone.Build.0 = Debug|iPhone
+		{C64014CD-D937-46AA-B30D-E19C66AA04FE}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{C64014CD-D937-46AA-B30D-E19C66AA04FE}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{C64014CD-D937-46AA-B30D-E19C66AA04FE}.Release|iPhone.ActiveCfg = Release|iPhone
+		{C64014CD-D937-46AA-B30D-E19C66AA04FE}.Release|iPhone.Build.0 = Release|iPhone
+		{C64014CD-D937-46AA-B30D-E19C66AA04FE}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{C64014CD-D937-46AA-B30D-E19C66AA04FE}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = RemittanceAdvice\RemittanceAdvice.csproj
+	EndGlobalSection
+EndGlobal
