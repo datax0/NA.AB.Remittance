@@ -1,12 +1,13 @@
-﻿// WARNING
+// WARNING
 //
-// This file has been generated automatically by Xamarin Studio to store outlets and
-// actions made in the UI designer. If it is removed, they will be lost.
-// Manual changes to this file may not be handled correctly.
+// This file has been generated automatically by Xamarin Studio from the outlets and
+// actions declared in your storyboard file.
+// Manual changes to this file will not be maintained.
 //
+using System;
 using MonoTouch.Foundation;
-using System.CodeDom.Compiler;
 using MonoTouch.UIKit;
+using System.CodeDom.Compiler;
 
 namespace RemittanceAdvice
 {
@@ -14,16 +15,30 @@ namespace RemittanceAdvice
 	partial class MainViewController
 	{
 		[Outlet]
-		UITextField PayTextField { get; set; }
+		[GeneratedCode ("iOS Designer", "1.0")]
+		RemittanceAdvice.TextButton LoLoginScene { get; set; }
 
-		[Action ("showInfo:")]
-		partial void showInfo (MonoTouch.Foundation.NSObject sender);
-		
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		MonoTouch.UIKit.UITextField PayTextField { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		RemittanceAdvice.TextButton ToRegisterScreen { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
+			if (LoLoginScene != null) {
+				LoLoginScene.Dispose ();
+				LoLoginScene = null;
+			}
 			if (PayTextField != null) {
 				PayTextField.Dispose ();
 				PayTextField = null;
+			}
+			if (ToRegisterScreen != null) {
+				ToRegisterScreen.Dispose ();
+				ToRegisterScreen = null;
 			}
 		}
 	}

@@ -1,5 +1,6 @@
 <WorkspaceItem ctype="Workspace">
   <Items>
     <Item>RemittanceAdvice/RemittanceAdvice.sln</Item>
+    <Item>../../Downloads/Field-Service/FieldService.Xamarin.sln</Item>
   </Items>
 </WorkspaceItem>

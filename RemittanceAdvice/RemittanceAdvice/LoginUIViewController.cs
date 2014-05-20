@@ -4,14 +4,23 @@ using System;
 
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using RemittanceAdvice.ViewModels;
+using RemittanceAdvice.Utilities;
 
 namespace RemittanceAdvice
 {
 	public partial class LoginUIViewController : BaseController
 	{
+		readonly LoginViewModel loginViewModel;
+		TabBarController tabController;
+
 		public LoginUIViewController (IntPtr handle) : base (handle)
 		{
-			// Custom initialization
+			loginViewModel = ServiceContainer.Resolve<LoginViewModel>();
+
+			//Hook up ViewModel events
+			//loginViewModel.IsBusyChanged += OnIsBusyChanged;
+			//loginViewModel.IsValidChanged += OnIsValidChanged;
 		}
 
 		public override void DidReceiveMemoryWarning ()
@@ -28,13 +37,29 @@ namespace RemittanceAdvice
 		{
 			base.ViewDidLoad ();
 
-			// Perform any additional setup after loading the view, typically from a nib.
-			//Hiding Keypad
-			var tap = new UITapGestureRecognizer ();
-			tap.AddTarget (() => {
-				View.EndEditing (true);
-			});
-			View.AddGestureRecognizer (tap);
+			//Set up any properties on views that must be done from code
+			View.BackgroundColor = Theme.LinenPattern;
+
+			//Text Fields
+			//I used LeftView as a quick way to add padding to a "plain" styled UITextField
+			Username.LeftViewMode = UITextFieldViewMode.Always;
+			Username.TextColor = Theme.LabelColor;
+			Username.SetDidChangeNotification (text => loginViewModel.Username = text.Text);
+			Username.ShouldReturn = _ => {
+				Password.BecomeFirstResponder ();
+				return false;
+			};
+
+			Password.LeftViewMode = UITextFieldViewMode.Always;
+			Password.TextColor = Theme.LabelColor;
+			Password.SetDidChangeNotification (text => loginViewModel.Password = text.Text);
+			Password.ShouldReturn = _ => {
+				if (loginViewModel.IsValid) {
+					Login (this.LoginButton);
+				}
+				return false;
+			};
+
 
 		}
 
@@ -59,5 +84,24 @@ namespace RemittanceAdvice
 		}
 
 		#endregion
+
+		partial void Login (UIButton sender)
+		{
+			//Dismiss the keyboard
+			Username.ResignFirstResponder ();
+			Password.ResignFirstResponder ();
+
+			loginViewModel
+				.LoginAsync ()
+				.ContinueWith (_ => 
+					BeginInvokeOnMainThread (() => {
+						if (tabController == null)
+						{
+							//tabController = Storyboard.InstantiateViewController<TabBarController>();
+							tabController = (TabBarController)this.Storyboard.InstantiateViewController("TabBarController");
+						}
+						Theme.TransitionController(tabController);
+					}));
+		}
 	}
 }

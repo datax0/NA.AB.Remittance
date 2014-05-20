@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -92,6 +92,11 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\Icon.png" />
+    <BundleResource Include="Resources\Icon%402x.png" />
+    <BundleResource Include="Resources\Icon-60%402x.png" />
+    <BundleResource Include="Resources\Default.png" />
+    <BundleResource Include="Resources\Default%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -115,6 +120,36 @@
       <DependentUpon>LoginUIViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseController.cs" />
+    <Compile Include="TextButton.cs" />
+    <Compile Include="TextButton.designer.cs" />
+    <Compile Include="Theme.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="ILoginService.cs" />
+    <Compile Include="Data\PropertyChangedBase.cs" />
+    <Compile Include="Utilities\TaskExtensions.cs" />
+    <Compile Include="Catalog.cs" />
+    <Compile Include="Utilities\ServiceContainer.cs" />
+    <Compile Include="ViewModel\UIExtensions.cs" />
+    <Compile Include="TabBarController.cs" />
+    <Compile Include="TabBarController.designer.cs">
+      <DependentUpon>TabBarController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\SynchronizeInvoke.cs" />
+    <Compile Include="ServiceRegistrar.cs" />
+    <Compile Include="Data\SampleLoginService.cs" />
+    <Compile Include="PaymentsViewController.cs" />
+    <Compile Include="PaymentsViewController.designer.cs">
+      <DependentUpon>PaymentsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewPaymentViewController.cs" />
+    <Compile Include="NewPaymentViewController.designer.cs">
+      <DependentUpon>NewPaymentViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RecieversViewController.cs" />
+    <Compile Include="RecieversViewController.designer.cs">
+      <DependentUpon>RecieversViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
@@ -122,5 +157,11 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Controls\" />
+    <Folder Include="ViewModel\" />
+    <Folder Include="Data\" />
+    <Folder Include="Utilities\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
 </Project>

@@ -4,6 +4,9 @@ using System.Linq;
 
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using RemittanceAdvice.Utilities;
+using RemittanceAdvice.ViewModels;
+using System.ComponentModel;
 
 namespace RemittanceAdvice
 {
@@ -13,29 +16,61 @@ namespace RemittanceAdvice
 	[Register ("AppDelegate")]
 	public partial class AppDelegate : UIApplicationDelegate
 	{
-		// class-level declarations
-		
+		UIStoryboard storyboard;
+		MainViewController mainViewController;
+
 		public override UIWindow Window {
 			get;
 			set;
 		}
-		
-		// This method is invoked when the application is about to move from active to inactive state.
-		// OpenGL applications should use this method to pause.
-		public override void OnResignActivation (UIApplication application)
+
+		/// <summary>
+		/// This the main entry point for the app on iOS
+		/// </summary>
+		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
 		{
+			//Create our window
+			Window = new UIWindow(UIScreen.MainScreen.Bounds);
+
+			//Register some services
+			ServiceContainer.Register (Window);
+			ServiceContainer.Register <ISynchronizeInvoke>(() => new SynchronizeInvoke());
+
+			//Apply our UI theme
+			Theme.Apply ();
+
+			//Load our storyboard and setup our UIWindow and first view controller
+			storyboard = UIStoryboard.FromName ("MainStoryboard", null);
+			Window.RootViewController = 
+				mainViewController = storyboard.InstantiateInitialViewController () as MainViewController;
+			Window.MakeKeyAndVisible ();
+
+			return true;
 		}
-		
-		// This method should be used to release shared resources and it should store the application state.
-		// If your application supports background exection this method is called instead of WillTerminate
-		// when the user quits.
+
+
+		/// <summary>
+		/// Event when the app is backgrounded, or screen turned off
+		/// </summary>
 		public override void DidEnterBackground (UIApplication application)
 		{
+			var loginViewModel = ServiceContainer.Resolve<LoginViewModel>();
+
+			loginViewModel.ResetInactiveTime ();
 		}
-		
-		// This method is called as part of the transiton from background to active state.
+
+		/// <summary>
+		/// Event when the app is brought back to the foreground or screen unlocked
+		/// </summary>
 		public override void WillEnterForeground (UIApplication application)
 		{
+			var loginViewModel = ServiceContainer.Resolve<LoginViewModel>();
+//			if (loginViewModel.IsInactive) {
+//				Theme.TransitionController (loginController, false);
+//			}
+
+			//Let's reset the time, just to be safe
+			loginViewModel.ResetInactiveTime ();
 		}
 		
 		// This method is called when the application is about to terminate. Save data, if needed.

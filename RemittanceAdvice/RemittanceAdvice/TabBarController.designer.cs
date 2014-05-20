@@ -11,13 +11,9 @@ using System.CodeDom.Compiler;
 
 namespace RemittanceAdvice
 {
-	[Register ("FlipsideViewController")]
-	partial class FlipsideViewController
+	[Register ("TabBarController")]
+	partial class TabBarController
 	{
-		[Action ("done:")]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		partial void done (MonoTouch.UIKit.UIBarButtonItem sender);
-
 		void ReleaseDesignerOutlets ()
 		{
 		}

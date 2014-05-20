@@ -29,6 +29,15 @@ namespace RemittanceAdvice
 			if (UIDevice.CurrentDevice.CheckSystemVersion(7, 0)) {
 				EdgesForExtendedLayout = UIRectEdge.None;
 			}
+
+			View.BackgroundColor = UIColor.White;
+
+			//Hiding Keypad
+			var tap = new UITapGestureRecognizer ();
+			tap.AddTarget (() => {
+				View.EndEditing (true);
+			});
+			View.AddGestureRecognizer (tap);
 		}
 
 		/// <summary>

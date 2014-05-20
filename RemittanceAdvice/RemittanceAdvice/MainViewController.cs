@@ -5,7 +5,7 @@ using System.Drawing;
 
 namespace RemittanceAdvice
 {
-	public partial class MainViewController : UIViewController
+	public partial class MainViewController : BaseController
 	{
 		const float JVFieldHeight = 44.0f;
 		const float JVFieldHMargin = 10.0f;
@@ -32,7 +32,7 @@ namespace RemittanceAdvice
 	
 			base.ViewDidLoad ();
 			Title = "Aktif Transfer";
-			View.BackgroundColor = UIColor.White;
+
 			/*
 			float topOffset = UIApplication.SharedApplication.StatusBarFrame.Size.Height; //+ NavigationController.NavigationBar.Frame.Size.Height;
 			UIColor floatingLabelColor = UIColor.Gray, floatingLabelActiveColor = UIColor.Blue;
@@ -76,9 +76,7 @@ namespace RemittanceAdvice
 
 		#endregion
 
-		partial void showInfo (NSObject sender)
-		{
-		}
+
 	}
 }
 
